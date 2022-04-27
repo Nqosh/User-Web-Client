@@ -1,0 +1,49 @@
+<div class="card" style="width: 100%;">
+  <div class="card-header" style="background-color:#40b6e8;">
+    <h5 style="color: #fff;" id="test">User Management</h5>
+  </div>
+
+  <div class="card-body">
+    <h2 style="color: #000000;">Add User</h2>
+  </div>
+
+  <form #createForm="ngForm" class="form-inline" (ngSubmit)="createUser(createForm.value)">
+    <input type="text" id="name-input" style="width: 50%;" class="form-control mb-2 mr-sm-2" name="name" 
+    required minlength="2" [(ngModel)]='user.name' placeholder="user name">
+    <input type="text" id="surname-input" style="width: 50%;" class="form-control mb-2 mr-sm-2" name="surname" 
+    required minlength="2" [(ngModel)]='user.surname' placeholder="user surname">
+    <input type="text" id="cellPhone-input" style="width: 50%;" class="form-control mb-2 mr-sm-2" name="cellPhone" 
+    required minlength="10" [(ngModel)]='user.cellPhone' placeholder="cellPhone">
+    <br>
+    <button type="submit" id="create-btn" class="btn btn-success" name="create">Create</button>
+  </form>
+
+  <hr>
+  <table id="user" class="table table-bordered">
+    <tr>
+      <th style="color: #4e6066; font-weight: normal; font-size: medium;">
+      <strong>Name</strong>
+      </th>
+      <th style="color: #4e6066; font-weight: normal; font-size: medium;">
+      <strong>Surname</strong> 
+      </th>
+      <th style="color: #4e6066; font-weight: normal; font-size: medium;">
+      <strong>CellPhone</strong>  
+      </th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>
+        {{user.name}}
+      </td>
+      <td>
+        {{user.surname}}
+      </td>
+      <td>
+        {{user.cellPhone}}
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger btn-sm" (click)="deleteUser(user.id)" style="background-color: red;">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
